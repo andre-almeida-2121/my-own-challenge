@@ -1,7 +1,22 @@
-import React from "react";
+import TodoItem from "./TodoItem";
 
-const TodoList = () => {
-  return <div>TodoList</div>;
-};
+function TodoList({ todos, onToggle, onDelete }) {
+  if (todos.length === 0) {
+    return <p className="empty">Nenhuma tarefa adicionada.</p>;
+  }
+
+  return (
+    <ul className="todo-list">
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
+      ))}
+    </ul>
+  );
+}
 
 export default TodoList;

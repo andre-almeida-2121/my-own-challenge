@@ -1,68 +1,145 @@
+/* Variables */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary: hsl(220, 80%, 50%);
+  --hover: hsl(220, 80%, 45%);
+  --light-bg: #f9f9f9;
+  --card-bg: #ffffff;
+  --text-gray: #555;
+  --text-light: #999;
+  --item: #f2f2f2;
+  --danger: #dc3545;
+  --completed: #aaa;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  background-color: var(--light-bg);
+  color: var(--text-gray);
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Components */
+
+.todo-app {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  max-width: min(31.25rem, 100%);
+  margin: 5rem auto;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/** Input **/
+
+.todo-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-block-end: 1rem;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.todo-input button {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  background-color: var(--primary);
+  color: var(--card-bg);
+  border-radius: 0.5rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.2s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.todo-input button:hover {
+  background-color: var(--hover);
+}
+
+/** List **/
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty {
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+  margin-block-start: 1rem;
+}
+
+/** Item **/
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-block-end: 0.5rem;
+  background-color: var(--item);
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.todo-text {
+  cursor: pointer;
+  flex: 1;
+  font-weight: 400;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--completed);
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+/* Attribution */
+
+.attribution {
+  position: relative;
+  bottom: 0.5rem;
+  width: 100%;
+  font-size: 0.6875rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.attribution a {
+  color: var(--primary);
+  text-decoration: none;
 }
